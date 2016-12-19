@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>贪吃蛇</title>
+</head>
+<body>
+<canvas width="400" height="400" id="canvas" style="border:10px solid #A2CD5A;"></canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    var cxt = canvas.getContext('2d');
+
+    // 定时器
+    var timer;
+    // 游戏是否结束
+    var iStop = false;
+    var index = 0;
+    // 蛇位置
+    var snake_bodys = [{'x':20,'y':20},{'x':40,'y':20},{'x':60,'y':20}];
+    // 一个方格的长度
+    var snake_body_len = 20;
+    // 蛇头位置
+    var snake_head = {'x':20,'y':20};
+    // 蛇前进方向
+    var snake_direction = 's'; // east south west north
+    // 虫子的位置
+    var worm = {'x':200,'y':200};
+    // 前进时被删除的蛇的最后一个方格
+    var snake_last;
+    // 得分 一个虫子得一分
+    var score = 0;
+
+    var snake_color = '#8FBC8F';
+    var snake_border_color = 'red';
+    var snake_eye_color = 'black';
+    var worm_color = '#A0522D';
+
+    // 清除画布
+    function erase() {
+        cxt.clearRect(0, 0, canvas.width, canvas.height)
+    }
+
+    // 画蛇
+    function drawSnake() {
+        cxt.save();
+        cxt.strokeStyle = snake_border_color;
+        cxt.fillStyle = snake_color;
+        for(var i=0; i<snake_bodys.length; i++){
+            cxt.fillRect(snake_bodys[i].x, snake_bodys[i].y, snake_body_len, snake_body_len);
+            cxt.strokeRect(snake_bodys[i].x, snake_bodys[i].y, snake_body_len, snake_body_len);
+        }
+        cxt.restore();
+
+        cxt.save();
+        cxt.fillStyle = snake_eye_color;
+        cxt.beginPath();
+        cxt.arc(snake_head.x+10, snake_head.y+10, 5, 0, 360*Math.PI/180, false);
+        cxt.fill();
+        cxt.closePath();
+        cxt.restore();
+    }
+
+    // 画虫子
+    function drawWorm(){
+        cxt.save();
+        cxt.fillStyle = worm_color;
+        cxt.fillRect(worm.x, worm.y, snake_body_len, snake_body_len);
+        cxt.restore();
+    }
+
+    // 随机产生虫子
+    function createWorm(){
+        var r_x = Math.random();
+        var r_y = Math.random();
+        var x = Math.floor(r_x*20);
+        var y = Math.floor(r_y*20);
+        worm = {'x':x*20, 'y':y*20};
+    }
+
+    // 前进一步
+    function step(){
+        switch (snake_direction){
+            case 'e':
+                snake_head = {'x':snake_head.x + snake_body_len,'y':snake_head.y};
+                break;
+            case 's':
+                snake_head = {'x':snake_head.x,'y':snake_head.y + snake_body_len};
+                break;
+            case 'w':
+                snake_head = {'x':snake_head.x - snake_body_len,'y':snake_head.y};
+                break;
+            case 'n':
+                snake_head = {'x':snake_head.x,'y':snake_head.y - snake_body_len};
+                break;
+            default :
+                break;
+        }
+
+        // 是否吃到了虫子
+        if(snake_head.x == worm.x && snake_head.y == worm.y){
+            createWorm();
+            snake_bodys.push(snake_last);
+            score++;
+        }
+
+        snake_last = snake_bodys.pop();
+        snake_bodys.unshift(snake_head);
+
+        // 蛇碰到了自己的身体 游戏结束
+        for(var i=1; i<snake_bodys.length; i++){
+            if(snake_head.x == snake_bodys[i].x && snake_head.y == snake_bodys[i].y){
+                iStop = true;
+                break;
+            }
+        }
+
+        // 蛇跑出了边界 游戏结束
+        if(snake_head.x >= 400 || snake_head.x < 0 || snake_head.y >= 400 || snake_head.y< 0){
+            iStop = true;
+        }
+    }
+
+    // 画得分
+    function drawScore() {
+        cxt.save();
+        cxt.font="20px Verdana";
+        cxt.fillStyle = 'skyblue';
+        cxt.fillText('得分：' + score, 300, 50);
+        cxt.restore();
+    }
+
+    // 画游戏结束
+    function drawOver() {
+        cxt.save();
+        cxt.font="20px Verdana";
+        cxt.fillStyle = 'yellow';
+        cxt.fillText('游戏结束！', 150, 190);
+        cxt.restore();
+    }
+
+    var last = new Date();
+    document.onkeydown = (function(e){
+        var now = new Date();
+        if(now.getTime() - last.getTime() < 100){
+            return;
+        }
+        last = now;
+        switch(e.which){
+            case 39:
+                if(snake_direction != 'w'){
+                    snake_direction = 'e';
+                }
+                break;
+            case 40:
+                if(snake_direction != 'n') {
+                    snake_direction = 's';
+                }
+                break;
+            case 37:
+                if(snake_direction != 'e') {
+                    snake_direction = 'w';
+                }
+                break;
+            case 38:
+                if(snake_direction != 's') {
+                    snake_direction = 'n';
+                }
+                break;
+        }
+    });
+
+    window.requestAnimationFrame =
+            window.requestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.msRequestAnimationFrame;
+
+    window.cancelRequestAnimationFrame =
+            window.cancelRequestAnimationFrame ||
+            window.mozCancelRequestAnimationFrame ||
+            window.webkitCancelRequestAnimationFrame ||
+            window.msCancelRequestAnimationFrame;
+
+    function animate() {
+        index++;
+        if(index%10 == 0){
+            step();
+        }
+        erase();
+        drawSnake();
+        drawWorm();
+        drawScore();
+
+        if(iStop){
+            cancelRequestAnimationFrame(timer);
+            drawOver();
+        }else{
+            timer = requestAnimationFrame(animate);
+        }
+    }
+
+    animate();
+
+</script>
+</body>
+</html>
