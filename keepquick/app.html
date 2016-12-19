@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html style="font-size: 13px">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="apple-touch-icon-precomposed" href="/static/bee/img/app_icon-bae075e7.png">
+<title>爱鲜蜂</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="description" content="各种新鲜，闪电送！鲜蜂侠急送,1小时内送货上门,下单后鲜蜂侠火速送上冰饮零食、卤味夜宵~OTO领域的创新企业，专注于社区服务的最后1公里">
+<meta name="keywords" content="爱鲜蜂,社区O2O,网上外卖,订外卖">
+<script>
+	(function(){
+		var calc = function(){
+			var docElement = document.documentElement;
+			var clientWidthValue = docElement.clientWidth > 480 ? 480 : docElement.clientWidth;
+			docElement.style.fontSize = 10*(clientWidthValue/320) + 'px';
+		}
+		calc();
+		window.addEventListener('resize',calc);
+	})();
+</script>
+<script data-main = "js/app.js" type="text/javascript" src = "js/require.js"></script>
+<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+<link href="css/main.css" rel="stylesheet">
+<!-- <script src="js/jquery-1.11.0.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/main.js"></script> -->
+</head>
+<body>
+	<div class="require">
+		<div id="index"></div>
+		<div id="buy"></div>
+		<div id="cart"></div>
+		<div id="user"></div>
+	</div>
+    <!-- 清浮动 -->
+	<div class="clearfixed"></div>
+	<!-- foot -->
+	<div class="foottop"></div>
+	<footer class="footer">
+		<div class="footlist">
+			<ul class="foot-nav" id="requireFoot">
+				<li class="foot-nav1" href="#index"> 
+					<a href="#index">首页</a>
+				</li>
+				<li class="foot-nav2" >
+				<a href="#buy">闪送超市</a>
+				</li >
+				<li class="foot-nav3">
+					<a href="#cart">购物车</a>
+				</li>
+				<li class="foot-nav4">
+					<a href="#user">我的</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>

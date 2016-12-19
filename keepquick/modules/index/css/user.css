@@ -1,0 +1,460 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors AnRan
+ * @date    2016-12-12 09:53:42
+ * @version 1.0
+ */
+ /* ---------------------全局------------------------- */
+ * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body,
+button,
+dd,
+dl,
+dt,
+footer,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+li,
+nav,
+ol,
+p,
+td,
+textarea,
+tr,
+ul,
+html,
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+em {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 16px/1.5 "Myriad Set Pro", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif, 'Microsoft Yahei', Simsun;
+	color: #333;
+	background-color: #efefef;
+	-webkit-text-size-adjust: none;
+	min-width: 320px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%
+}
+
+form {
+	display: inline
+}
+
+ol,
+ul {
+	list-style: none
+}
+
+a {
+	text-decoration: none;
+	color: #1a1a1a;
+}
+
+a:active,
+a:focus,
+a:hover {
+	color: #1c5aa2;
+	text-decoration: none;
+}
+
+a:active {
+	color: #aaa;
+}
+
+img {
+	vertical-align: middle;
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+}
+
+button,
+input,
+select,
+textarea {
+	font-size: 100%;
+	vertical-align: middle;
+	outline: 0;
+}
+
+textarea {
+	resize: none;
+}
+
+button,
+input[type=reset],
+input[type=submit],
+input[type=button] {
+	cursor: pointer;
+	-webkit-appearance: button;
+	-moz-appearance: button;
+}
+
+input:focus:-moz-placeholder,
+input:focus::-webkit-input-placeholder {
+	color: transparent;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	padding: 0;
+	border: 0
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+article,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+	clear: all
+}
+
+html {
+	-webkit-text-size-adjust: none
+}
+.clearfixed:after {
+	content: ".";
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+/* ---------------------------userHead---------------------------- */
+// .main{
+// 	position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+// }
+// .user-position{
+	
+//     padding-top: 0rem;
+//     top: 13.5rem;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+// }
+.user-head-fixed{
+	//position: relative;
+	width: 100%;
+	background-color: #ffd600;
+}
+.user-head-position{
+	position: fixed;
+	width: 100%;
+	z-index: 9999;
+	background-color: #ffd600;
+	top: 0;
+}
+.user-head{
+	width: 100%;
+    position: relative;
+    height: 10rem;
+    background: center center no-repeat;
+	background-color: #ffd600;
+    background-size: 100% 100%;
+}
+.user-head-top{
+	width: 100%;
+    height: 8rem;
+    padding-left: 9rem;
+    padding-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    background: 1.5rem bottom no-repeat;
+	background-image: url(../img/data-image-png;base.png);
+    background-size: auto 6rem;
+}
+.username{
+    line-height: 1;
+    margin: .7rem 0;
+}
+.usrelevel{
+    color: #e64f1a;
+    line-height: 2.8rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: auto 100%;
+    background-image: url(../img/data-image-pngbase7.png);
+    padding-left: 2.9rem;
+    font-size: 1rem;
+}
+.usreinfo{
+    background-image:url(../img/data-image-pngbase8.png);
+    content: '';
+    position: absolute;
+    width: 1.1rem;
+    height: 1.9rem;
+    top: 50%;
+    right: 2rem;
+    -webkit-transform: translateY(-50%);
+    background-size: 100% 100%;
+}
+.user-favorite{
+	width: 100%;
+    background-color: #f3c800;
+    height: 3.5rem;
+    display: -webkit-flex;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    color: #fff;
+    font-size: 1.2rem;
+}
+.user-favorite-list{
+	width: 100%;
+	height: 3.5rem;
+	line-height: 3.5rem;
+}
+.user-favorite-list li{
+	float: left;
+}
+.user-favorite-list-left,.user-favorite-list-right{
+	width: 50%;
+	text-align: center;
+	height: 3.5rem;
+	line-height: 3.5rem;
+	float: left;
+	padding-left: 3rem;
+}
+.user-favorite-list-left{
+	background: url(../img/data-image-png;base9.png) no-repeat 3rem center;
+    background-size: auto 1.8rem;
+}
+.user-favorite-list-right{
+	float: right;
+	background: url(../img/data-image-png;base10.png) no-repeat 3rem center;
+    background-size: auto 1.8rem;
+}
+.user-favorite-list-split{
+    width: 1px;
+    height: 60%;
+    background: #fff;
+    -ms-flex-item-align: center;
+    align-self: center;
+}
+/* ---------------------------userNav---------------------------- */
+.user-nav{
+    font-size: 1.4rem;
+	margin: 1rem 0;
+	margin-top:14.5rem; 
+    background-color: #fff;
+    display: block;
+}
+.user-nav-top{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #e0e0e0;
+    padding-left: 1.5rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+    padding-right: 2.5rem;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 1rem;
+    background-image: url(../img/data-image-more.png);
+}
+.user-nav-top-all{
+	float: right;
+	color: #999;
+}
+.user-nav-list{
+	//border-top: 1px solid #999;
+	width: 100%;
+	background-color: #fff;
+}
+.user-nav-list li{
+    position: relative;
+    float: left;
+    width: 25%;
+    padding-top: 13%;
+    text-align: center;
+    line-height: 3rem;
+    font-size: 1.2rem;
+    background: center 40% no-repeat #fff;
+    background-size: auto 25%;
+}
+.user-nav-list li:nth-child(1){
+	background-image: url(../img/data-image-png;base11.png);
+}
+.user-nav-list li:nth-child(2){
+	background-image: url(../img/data-image-png;base12.png);
+}
+.user-nav-list li:nth-child(3){
+	background-image: url(../img/data-image-png;base13.png);
+}
+.user-nav-list li:nth-child(4){
+	background-image: url(../img/data-image-png;base14.png);
+}
+/* ---------------------------------userList------------------------ */
+.user-list{
+	font-size: 1.4rem;
+	margin: 1rem 0;
+    background-color: #fff;
+    display: block;
+}
+.user-list-top,.user-list-bottom{
+	width: 100%;
+	height: 10rem;
+	background-color: #fff;
+}
+.user-list-top li{
+	bordeer:none;
+	border-bottom: solid #e0e0e0 1px;
+}
+.user-list-top li,.user-list-bottom li{
+	position: relative;
+    float: left;
+    width: 25%;
+	line-height: 2rem;
+    font-size: 1.2rem;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+    text-align: center;
+    background: center 3rem no-repeat #fff;
+    background-size: 3rem;
+}
+.user-list-top li:nth-child(1){
+	background-image: url(../img/data-image-png;base15.png);
+}
+.user-list-top li:nth-child(2){
+	background-image: url(../img/data-image-png;base16.png);
+}
+.user-list-top li:nth-child(3){
+	background-image: url(../img/data-image-png;base17.png);
+}
+.user-list-top li:nth-child(4){
+	background-image: url(../img/data-image-png;base18.png);
+}
+.user-list-bottom li:nth-child(1){
+	background-image: url(../img/data-image-png;base19.png);
+}
+.user-list-logout{
+	    font-size: 1.4rem;
+    background-color: #fff;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    text-align: center;
+    margin: 1rem 0;
+    margin-top: 3rem!important;
+}
+/* ---------------------foot------------------------ */
+.foottop{
+	height: 5rem;
+}
+.footer{
+
+	position: fixed;
+    z-index: 150;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5rem;
+    background-color: rgba(246,246,246,.95);
+}
+.footlist{
+	width: 100%;
+	position: absolute;
+    z-index: 150;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.footlist ul{
+	text-align: center;
+	width: 100%;
+}
+.footlist li{
+	
+	font-size: 1.2rem;
+    color: #777;
+	width: 25%;
+	float: left;
+	padding-top: 3rem;
+}
+.foot-nav1{
+	background: no-repeat center .6rem;
+	background-image: url(../img/data-image-png;base21.png);
+    background-size: auto 2rem;
+}
+.foot-nav2{
+	background: no-repeat center .6rem;
+    background-size: auto 2rem;
+	background-image: url(../img/data-image.png);
+}
+.foot-nav3{
+	background: no-repeat center .6rem;
+    background-size: auto 2rem;
+	background-image: url(../img/data-image-base3.png);
+}
+.foot-nav4{
+	background: no-repeat center .6rem;
+    background-size: auto 2rem;
+	background-image: url(../img/data-image-png;base20.png);
+}
