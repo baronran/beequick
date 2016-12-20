@@ -107,6 +107,8 @@ $signPackage = $jssdk->GetSignPackage();
   });
 wx.ready(function () {
     // 在这里调用 API
+    var latitude = 0;
+    var longitude = 0;
     wx.getLocation({
     success: function (res) {
         latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
